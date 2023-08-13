@@ -50,7 +50,9 @@ make -j24 (24 jobs, nproc will show available cores. double this number)
 
 #run qemu:
 #https://itsfoss.com/qemu-ubuntu/
-#qemu-system-x86_64 -enable-kvm -m 4G -smp 2 -hda Qubes.qcow2 -boot d -cdrom /home/auxytocin/Desktop/Qubes-R4.1.1-x86_64.iso -vga qxl
+#make image:
+#qemu-img convert kali-linux-2023.2-live-amd64.iso kali.qcow2
+#qemu-system-x86_64 -enable-kvm -m 4G -smp 2 -hda /home/auxytocin/Documents/myVirtualDisk.qcow2 -boot d -cdrom /home/auxytocin/Documents/kali.qcow2 -vga qxl
 #Qubes should not be installed in virtualization. 
 #works - but still needs a partition for installtion. 
 
