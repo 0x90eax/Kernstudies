@@ -53,8 +53,8 @@ make -j24 (24 jobs, nproc will show available cores. double this number)
 #make image:
 #qemu-img convert kali-linux-2023.2-live-amd64.iso kali.qcow2
 #qemu-system-x86_64 -enable-kvm -m 4G -smp 2 -hda /home/auxytocin/Documents/myVirtualDisk.qcow2 -boot d -cdrom /home/auxytocin/Documents/kali.qcow2 -vga qxl
-#Qubes should not be installed in virtualization. 
-#works - but still needs a partition for installtion. 
+#after installed onto the .qcow2 disk run this cmd:
+#qemu-system-x86_64 -enable-kvm -m 4G -smp 2 -hda /home/auxytocin/Documents/myVirtualDisk.qcow2
 
 #setting up network in qemu
 #https://ahelpme.com/linux/howto-do-qemu-full-virtualization-with-bridged-networking/
