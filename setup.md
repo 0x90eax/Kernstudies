@@ -26,6 +26,32 @@ python3-distutils rt-tests smem sparse stress sysfsutils tldr-py trace-cmd tree 
 #make
 
 #set up kernel production env 
-mkdir -p ~/lkd_kernels/productionk
-cd ~/lkd_kernels
-wget https://mirrors.edge.kernel.org/pub/linux/kernel/v5.x/linux-5.10.60.tar.xz
+#mkdir -p ~/lkd_kernels/productionk
+#cd ~/lkd_kernels
+#wget https://mirrors.edge.kernel.org/pub/linux/kernel/v5.x/linux-5.10.60.tar.xz
+
+#define a tuned starting point for kern config. 
+#lsmod > /tmp/lsmod.now
+#make LSMOD=/tmp/lsmod.now localmodconfig
+#This is prompt you for input, leave all default.
+
+#Secure Prod Kernel:
+#checker: https://github.com/a13xp0p0v/kconfig-hardened-check
+
+#cd to kernel dr and run
+make -j24 (24 jobs, nproc will show available cores. double this number)
+#This will create a bzImage. 
+#BUILD   arch/x86/boot/bzImage
+#vmlinux  houses all the symbolic information.
+
+#Run this in qemu.
+#create .img spaceholder:
+#qemu-img create -f qcow2 ubuntu20.qcow2 30G
+
+#run qemu:
+#https://itsfoss.com/qemu-ubuntu/
+#qemu-system-x86_64 -enable-kvm -m 4G -smp 2 -hda Qubes.qcow2 -boot d -cdrom /home/auxytocin/Desktop/Qubes-R4.1.1-x86_64.iso -vga qxl
+#works - but still needs a partition for installtion. 
+
+#setting up network in qemu
+#https://ahelpme.com/linux/howto-do-qemu-full-virtualization-with-bridged-networking/
